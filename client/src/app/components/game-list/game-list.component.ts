@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostBinding } from '@angular/core';
 import { GamesService } from '../../services/games.service';
 
 
@@ -9,6 +9,7 @@ import { GamesService } from '../../services/games.service';
 })
 export class GameListComponent implements OnInit {
 
+  @HostBinding('class') classes = 'row';
   games: any = [];
 
   constructor(private gamesService:GamesService) { }
@@ -21,6 +22,11 @@ export class GameListComponent implements OnInit {
       },
       err => console.log(err)
     );
+  }
+
+  deleteGame(id:any){
+    console.log(id);
+    console.log(this.games.id);
   }
 
 }
